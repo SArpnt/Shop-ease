@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      3.0.0
 // @run-at       document-start
-// @description  Makes shop opening and closing look nicer
+// @description  Makes shop/chat log opening and closing look nicer
 // @author       SArpnt
 // @match        https://boxcritters.com/play/
 // @match        https://boxcritters.com/play/?*
