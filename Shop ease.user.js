@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shop ease
 // @namespace    http://tampermonkey.net/
-// @version      2.0.0
+// @version      3.0.0
 // @run-at       document-start
 // @description  Makes shop opening and closing look nicer
 // @author       SArpnt
@@ -28,8 +28,13 @@
 			createjs.Tween.get(shop, { override: true })
 				.to({ x: this.width - shop.width * o }, 300, createjs.Ease.cubicOut)`
 		).replace(
-			/d\.on\s*\(\s*["'`]click["'`]\s*,\s*\(?\s*function\s*\(\)\s*\{\s*this\.parent\.removeChild\s*\(\s*this\s*\)\s*[,;]?\s*\}\s*\)?\s*,\s*this\s*\)/,
-			`d.on("click", function () {
+			/e\.x\s*=\s*this\.width\s*-\s*e.width\s*\*\s*i/,
+			`e.x = this.width,
+			createjs.Tween.get(e, { override: true })
+				.to({ x: this.width - e.width * i }, 300, createjs.Ease.cubicOut)`
+		).replace(
+			/(d|o)\.on\s*\(\s*["'`]click["'`]\s*,\s*\(?\s*function\s*\(\)\s*\{\s*this\.parent\.removeChild\s*\(\s*this\s*\)\s*[,;]?\s*\}\s*\)?\s*,\s*this\s*\)/g,
+			(_,f)=>`${f}.on("click", function () {
 				createjs.Tween.get(this, { override: true })
 					.to({ x: this.stage.width }, 300, createjs.Ease.cubicIn)
 					.call(function () { this.parent.removeChild(this); });
