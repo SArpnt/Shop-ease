@@ -19,7 +19,7 @@
 
 (function () {
 	'use strict';
-	cardboard.register('Shop ease');
+	cardboard.register('shopEase');
 
 	cardboard.on('loadScriptClient', function (t) {
 		t.innerHTML = t.innerHTML.replace(
