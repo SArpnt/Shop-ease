@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Shop ease
 // @namespace    http://tampermonkey.net/
-// @version      3.0.0
+// @version      3.0.1
 // @run-at       document-start
 // @description  Makes shop/chat log opening and closing look nicer
 // @author       SArpnt
@@ -12,7 +12,6 @@
 // @match        https://boxcritters.com/play/index.html?*
 // @match        https://boxcritters.com/play/index.html#*
 // @grant        none
-// @require      https://code.jquery.com/jquery-3.5.1.min.js
 // @require      https://github.com/SArpnt/joinFunction/raw/master/script.js
 // @require      https://github.com/SArpnt/EventHandler/raw/master/script.js
 // @require      https://github.com/SArpnt/cardboard/raw/master/script.user.js
@@ -20,6 +19,7 @@
 
 (function () {
 	'use strict';
+	cardboard.register('Shop ease');
 
 	cardboard.on('loadScriptClient', function (t) {
 		t.innerHTML = t.innerHTML.replace(
